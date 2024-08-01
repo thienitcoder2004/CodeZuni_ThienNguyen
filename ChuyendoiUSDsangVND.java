@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ChuyendoiUSDsangVND{
     public static void main(String[] main){
         Scanner sc = new Scanner(System.in);
-        double VND = 23.500;
+        double VND = 23500.0;
         System.out.println("Doi tien USD => VND");
         System.out.print("Vui long nhap so USD can doi: ");
         double USD = sc.nextDouble();
