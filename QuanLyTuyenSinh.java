@@ -12,9 +12,6 @@ public class QuanLyTuyenSinh {
         System.out.println("Moi ban nhap diem mon thu ba");
         float diem3 = sc.nextFloat();
 
-        // Loại bỏ 
-        sc.nextLine();
-
         // Nhập khu vực
         System.out.println("Nhap khu vuc cua thi sinh:");
         System.out.println("A. Khu vuc A");
@@ -35,7 +32,7 @@ public class QuanLyTuyenSinh {
         float tongDiem = diem1 + diem2 + diem3;
 
         // Tính điểm ưu tiên khu vực
-        switch (khuvuc.toUpperCase()) {
+        switch (khuvuc) {
             case "A":
                 tongDiem += 2.0;
                 break;
