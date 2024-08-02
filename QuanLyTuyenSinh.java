@@ -1,3 +1,4 @@
+import java.util.*;
 import java.util.Scanner;
 
 public class QuanLyTuyenSinh {
@@ -11,6 +12,9 @@ public class QuanLyTuyenSinh {
         float diem2 = sc.nextFloat();
         System.out.println("Moi ban nhap diem mon thu ba");
         float diem3 = sc.nextFloat();
+
+        // Loại bỏ 
+        sc.nextLine();
 
         // Nhập khu vực
         System.out.println("Nhap khu vuc cua thi sinh:");
@@ -45,7 +49,7 @@ public class QuanLyTuyenSinh {
             case "X":
                 break;
             default:
-                System.out.println("Khu vuc khong hop le");
+                System.out.println("Vui long nhap khu vuc lai!");
                 return;
         }
 
@@ -63,13 +67,13 @@ public class QuanLyTuyenSinh {
             case "0":
                 break;
             default:
-                System.out.println("Doi tuong khong hop le");
+                System.out.println("Vui long nhap doi tuong lai!");
                 return;
         }
 
         // So sanh tong diem dau
         System.out.println("Moi ban nhap diem chuan");
-        double diemChuan = sc.nextDouble();
+        float diemChuan = sc.nextFloat();
         if (tongDiem >= diemChuan) {
             System.out.println("Ban da du diem dau " + tongDiem);
         }else{
