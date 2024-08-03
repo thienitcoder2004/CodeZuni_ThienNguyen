@@ -35,7 +35,7 @@ public class QuanLyTuyenSinh {
         float tongDiem = diem1 + diem2 + diem3;
 
         // Tính điểm ưu tiên khu vực
-        switch (khuvuc.toUpperCase()) {
+        switch (khuvuc) {
             case "A":
                 tongDiem += 2.0;
                 break;
@@ -48,7 +48,7 @@ public class QuanLyTuyenSinh {
             case "X":
                 break;
             default:
-                System.out.println("Khu vuc khong hop le");
+                System.out.println("Vui long nhap khu vuc lai!");
                 return;
         }
 
@@ -66,13 +66,13 @@ public class QuanLyTuyenSinh {
             case "0":
                 break;
             default:
-                System.out.println("Doi tuong khong hop le");
+                System.out.println("Vui long nhap doi tuong lai!");
                 return;
         }
 
         // So sanh tong diem dau
         System.out.println("Moi ban nhap diem chuan");
-        double diemChuan = sc.nextDouble();
+        float diemChuan = sc.nextFloat();
         if (tongDiem >= diemChuan) {
             System.out.println("Ban da du diem dau " + tongDiem);
         }else{
