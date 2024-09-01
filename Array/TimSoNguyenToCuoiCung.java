@@ -1,41 +1,42 @@
 import java.util.Random;
 import java.util.Scanner;
 
-public class TimSoNguyenToCuoiCung {
+public class TimViTriSoNguyenToCuoiCung {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int n;
 
+        // Nhập số phần tử của mảng, n >= 2
         do {
             System.out.print("Vui lòng nhập vào số phần tử của mảng (n >= 2): ");
             n = Integer.parseInt(scanner.nextLine());
         } while (n < 2);
 
-        int[] mang = taoMang(n);
+        double[] mang = taoMang(n);
         xuatMang(mang);
 
-        int soNguyenToCuoiCung = timSoNguyenToCuoiCung(mang);
-        if (soNguyenToCuoiCung == -1) {
+        int viTriSoNguyenToCuoiCung = timViTriSoNguyenToCuoiCung(mang);
+        if (viTriSoNguyenToCuoiCung == -1) {
             System.out.println("Mảng không có số nguyên tố.");
         } else {
-            System.out.println("Số nguyên tố cuối cùng trong mảng là: " + soNguyenToCuoiCung);
+            System.out.println("Vị trí " + viTriSoNguyenToCuoiCung + " là vị trí số nguyên tố cuối cùng trong mảng.");
         }
     }
 
-    // Hàm tạo mảng ngẫu nhiên các số nguyên từ -1000 đến 1000
-    public static int[] taoMang(int n) {
+    // Hàm tạo mảng ngẫu nhiên số thực từ -1000 đến 1000
+    public static double[] taoMang(int n) {
         Random rand = new Random();
-        int[] a = new int[n];
+        double[] a = new double[n];
         for (int i = 0; i < n; i++) {
-            a[i] = rand.nextInt(2001) - 1000; // Giá trị ngẫu nhiên từ -1000 đến 1000
+            a[i] = rand.nextDouble() * 2000 - 1000; // Giá trị ngẫu nhiên từ -1000 đến 1000
         }
         return a;
     }
 
     // Hàm xuất mảng
-    public static void xuatMang(int[] a) {
-        for (int value : a) {
-            System.out.print(value + "   ");
+    public static void xuatMang(double[] a) {
+        for (double value : a) {
+            System.out.printf("%.2f   ", value);
         }
         System.out.println();
     }
@@ -49,15 +50,15 @@ public class TimSoNguyenToCuoiCung {
         return true;
     }
 
-    // Hàm tìm số nguyên tố cuối cùng trong mảng
-    public static int timSoNguyenToCuoiCung(int[] a) {
-        int soNguyenToCuoiCung = -1;
+    // Hàm tìm vị trí số nguyên tố cuối cùng trong mảng số thực
+    public static int timViTriSoNguyenToCuoiCung(double[] a) {
         for (int i = a.length - 1; i >= 0; i--) {
-            if (laSoNguyenTo(a[i])) {
-                soNguyenToCuoiCung = a[i];
-                break;
+            // Chuyển đổi số thực thành số nguyên
+            int giaTri = (int) a[i];
+            if (a[i] == giaTri && laSoNguyenTo(giaTri)) {
+                return i;
             }
         }
-        return soNguyenToCuoiCung;
+        return -1;
     }
 }
