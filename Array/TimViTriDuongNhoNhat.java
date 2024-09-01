@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class TimViTriDuongNhoNhat {
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class TimViTriDuongNhoNhat {
             n = Integer.parseInt(scanner.nextLine());
         } while (n < 2);
 
-        int[] mang = taoMang(n);
+        double[] mang = taoMang(n);
         xuatMang(mang);
 
         int viTriDuongNhoNhat = timViTriDuongNhoNhat(mang);
@@ -21,24 +21,27 @@ public class TimViTriDuongNhoNhat {
             System.out.println("Giá trị dương nhỏ nhất nằm ở vị trí: " + viTriDuongNhoNhat);
         }
     }
-    // Hàm tạo mảng ngẫu nhiên
-    public static int[] taoMang(int n) {
+
+    // Hàm tạo mảng ngẫu nhiên số thực từ -1000 đến 1000
+    public static double[] taoMang(int n) {
         Random rand = new Random();
-        int[] a = new int[n];
+        double[] a = new double[n];
         for (int i = 0; i < n; i++) {
-            a[i] = rand.nextInt(2001) - 1000; // Giá trị ngẫu nhiên từ -1000 đến 1000
+            a[i] = rand.nextDouble() * 2000 - 1000; // Giá trị ngẫu nhiên từ -1000 đến 1000
         }
         return a;
     }
+
     // Hàm xuất mảng
-    public static void xuatMang(int[] a) {
-        for (int value : a) {
-            System.out.print(value + "   ");
+    public static void xuatMang(double[] a) {
+        for (double value : a) {
+            System.out.printf("%.2f   ", value);
         }
         System.out.println();
     }
-    // Tìm vị trí dương nhỏ nhất trong mảng
-    public static int timViTriDuongNhoNhat(int[] a) {
+
+    // Tìm vị trí giá trị dương nhỏ nhất trong mảng
+    public static int timViTriDuongNhoNhat(double[] a) {
         int viTri = -1;
         for (int i = 0; i < a.length; i++) {
             if (a[i] > 0 && (viTri == -1 || a[i] < a[viTri])) {
