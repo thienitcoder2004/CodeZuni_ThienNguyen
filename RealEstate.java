@@ -23,6 +23,7 @@ public class RealEstate {
         this.thang = thang;
         this.nam = nam;
         this.dongia = dongia;
+        this.dientich = dientich;
         this.thanhtoan = thanhtoan;
     }
 
@@ -102,13 +103,13 @@ public class RealEstate {
 
         do {
             System.out.print("Nhap dien tich: ");
-            this.dientich = Integer.parseInt(scan.nextLine());
+            this.dientich = Float.parseFloat(scan.nextLine());
         } while (this.dientich < 1);
 
         do {
-            System.out.print("Nhap so tien: ");
-            this.thanhtoan = Integer.parseInt(scan.nextLine());
-        } while (this.thanhtoan < 1);
+            System.out.print("Nhap don gia: ");
+            this.dongia = Float.parseFloat(scan.nextLine());
+        } while (this.dongia < 1);
     }
 
     public void xuat() {
@@ -117,6 +118,7 @@ public class RealEstate {
                 + "\tThang: " + this.thang
                 + "\tNam: " + this.nam
                 + "\tDien tich: " + this.dientich
+                + "\tDon gia: " + this.dongia
                 + "\tSo tien: " + this.thanhtoan);
     }
 

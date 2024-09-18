@@ -3,50 +3,51 @@ import java.util.Scanner;
 
 public class ListDeal {
     protected ArrayList<RealEstate> listDeal;
-    protected int soluongdatdai;
-    protected float tongsotiendat;
-    protected int soluongnha;
-    protected float tongsotiennha;
-
-    public int getSoluongdatdai() {
-        return soluongdatdai;
-    }
-
-    public float getTongsotiendat() {
-        return tongsotiendat;
-    }
-
-    public int getSoluongnha() {
-        return soluongnha;
-    }
-
-    public float getTongsotiennha() {
-        return tongsotiennha;
-    }
+    protected int soluongDatDai;
+    protected float tongSoTienDat;
+    protected int soluongNha;
+    protected float tongSoTienNha;
 
     public ListDeal() {
-        this.listDeal = new ArrayList<RealEstate>();
+        this.listDeal = new ArrayList<>();
+    }
+
+    public int getSoluongDatDai() {
+        return soluongDatDai;
+    }
+
+    public float getTongSoTienDat() {
+        return tongSoTienDat;
+    }
+
+    public int getSoluongNha() {
+        return soluongNha;
+    }
+
+    public float getTongSoTienNha() {
+        return tongSoTienNha;
     }
 
     public void nhap(Scanner scan) {
         boolean flag = true;
 
-        do {
-            System.out.println("Vui long lua chon: ");
-            System.out.println("1. Nhap loai dat: ");
-            System.out.println("2. Nhap loai nha:");
+        while (flag) {
+            System.out.println("Vui long lua chon:");
+            System.out.println("1. Nhap loai dat");
+            System.out.println("2. Nhap loai nha");
             System.out.println("0. Thoat");
             int chon = Integer.parseInt(scan.nextLine());
+
             switch (chon) {
                 case 1:
-                    RealEstate loaidat = new RealEstate();
-                    loaidat.nhap(scan);
-                    this.listDeal.add(loaidat);
+                    RealEstate loaiDat = new LandDeal();
+                    loaiDat.nhap(scan);
+                    this.listDeal.add(loaiDat);
                     break;
                 case 2:
-                    RealEstate loainha = new HouseDeal();
-                    loainha.nhap(scan);
-                    this.listDeal.add(loainha);
+                    RealEstate loaiNha = new HouseDeal();
+                    loaiNha.nhap(scan);
+                    this.listDeal.add(loaiNha);
                     break;
                 case 0:
                     flag = false;
@@ -55,16 +56,17 @@ public class ListDeal {
                     System.out.println("Vui long nhap lai!");
                     break;
             }
-        } while (flag);
+        }
     }
 
     public void xuat() {
         for (RealEstate deal : this.listDeal) {
             deal.xuat();
+            System.out.println();
         }
     }
 
-    // Tính tổng tất cả các hóa đơn nhà và đất
+    // Tỉnh tổng số doanh thu
     public void tinhTatCaThanhToan() {
         for (RealEstate deal : this.listDeal) {
             deal.tinhTongThanhToan();
@@ -73,42 +75,43 @@ public class ListDeal {
 
     // Đếm loại đất
     public void demLoaiDat() {
-        this.soluongdatdai = 0;
-        this.tongsotiendat = 0;
+        this.soluongDatDai = 0;
+        this.tongSoTienDat = 0;
         for (RealEstate deal : this.listDeal) {
             if (deal instanceof LandDeal) {
-                ++this.soluongdatdai;
-                this.tongsotiendat += deal.getThanhtoan();
+                ++this.soluongDatDai;
+                this.tongSoTienDat += deal.getThanhtoan();
             }
         }
     }
 
     // Đếm loại nhà
     public void demLoaiNha() {
-        this.soluongnha = 0;
-        this.tongsotiennha = 0;
+        this.soluongNha = 0;
+        this.tongSoTienNha = 0;
         for (RealEstate deal : this.listDeal) {
             if (deal instanceof HouseDeal) {
-                ++this.soluongnha;
-                this.tongsotiennha += deal.getThanhtoan();
+                ++this.soluongNha;
+                this.tongSoTienNha += deal.getThanhtoan();
             }
         }
     }
 
-    // Tính trung bình giá trị đất
+    // Tính trung bình tiền đất
     public float tinhTrungBinh() {
-        if (this.soluongdatdai == 0) {
+        if (this.soluongDatDai == 0) {
             return 0; 
         }
-        return this.tongsotiendat / (this.soluongdatdai * 1.0f);
+        return this.tongSoTienDat / this.soluongDatDai;
     }
 
-    // Danh sách giao dịch
+    // Danh sách thời gian giao dịch
     public void exportDeal(int thang, int nam) {
         System.out.println("Danh sach " + thang + "/" + nam);
         for (RealEstate deal : this.listDeal) {
-            if (deal.thang == thang && deal.nam == nam) {
+            if (deal.getThang() == thang && deal.getNam() == nam) {
                 deal.xuat();
+                System.out.println();
             }
         }
     }
